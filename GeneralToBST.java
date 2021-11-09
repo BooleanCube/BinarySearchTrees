@@ -6,7 +6,7 @@ public class GTB {
 		
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		
-		//initializing tree
+		//Initializing General Tree
 		Node head = new Node("A", new ArrayList<Node>());
 		Tree general = new Tree(head);
 		head.children.add(new Node("B", new ArrayList<Node>()));
