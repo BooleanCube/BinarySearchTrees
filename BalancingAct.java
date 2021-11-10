@@ -16,7 +16,7 @@ public class BalancingAct {
     
     public static void main(String[] args) throws IOException {
         
-        BufferedReader bf = new BufferedReader(new FileReader(new File("TREES.IN")));
+        BufferedReader bf = new BufferedReader(new FileReader(new File("src/TREES.IN")));
 
         for(int y=0; y<5; y++) {
             String[] split = bf.readLine().split(" ", 2);
@@ -40,7 +40,7 @@ public class BalancingAct {
                 }
                 treeMinDepth.addNode(node);
             }
-            System.out.println();
+            System.out.println(trees.get(0).preOrder());
         }
 
     }
@@ -55,9 +55,31 @@ class BST {
         this.head = head;
     }
     
-    public int addNode(Node node) {
-    	
-    	return -1;
+    public void addNode(Node node) {
+    	Node current = head;
+    	int depth = 1;
+    	while(true) {
+    		if(current.compareTo(node) == 1) {
+    			if(current.left == null) {
+    				current.left = node;
+    				break;
+    			}
+    			else {
+    				++depth;
+    				current = current.left;
+    			}
+    		}
+    		if(current.compareTo(node) < 1) {
+    			if(current.right == null) { 
+    				current.right = node;
+    				break;
+    			}
+    			else {
+    				++depth;
+    				current = current.right;
+    			}
+    		}
+    	}
     }
     
     public int getDepth(BST tree, Node node) {
@@ -81,13 +103,21 @@ class BST {
     	}
     }
     
-    public String preOrder(BST tree) {
-    	StringBuilder bs = new StringBuilder();
+    public String preOrder() {
+    	StringBuilder sb = new StringBuilder();
     	ArrayDeque<Node> q = new ArrayDeque<>();
-    	q.add(tree.head);
+    	q.add(head);
     	while(!q.isEmpty()) {
-    		
+    		Node current = q.removeFirst();
+    		sb.append(current.name).append(" ");
+    		if(current.left != null) {
+    			q.addFirst(current);
+    			q.addFirst(current.left);
+    		} else if(current.right != null) {
+    			q.addFirst(current.right);
+    		}
     	}
+    	return sb.toString().trim();
     }
 
 }
