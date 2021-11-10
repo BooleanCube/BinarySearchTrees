@@ -1,4 +1,4 @@
-# GeneralToBinaryTree
+# Binary Search Trees
 
 I encountered these problems in a Data Structures and Algorithms course I am taking for high school and found it interesting.
 
