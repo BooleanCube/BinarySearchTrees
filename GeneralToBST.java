@@ -35,9 +35,9 @@ class Tree {
     
     public Tree(Node head) {
         this.head = head;
-        }
+    }
 
-        public Tree() {}
+    public Tree() {}
     
     public Tree convertToBST() {
         ArrayDeque<Node> q = new ArrayDeque<Node>();
